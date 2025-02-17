@@ -95,7 +95,7 @@ self.addEventListener ('sync',event => {
 self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SHOW_NOTIFICATION') {
         self.registration.showNotification("🎂 ¡Dulcetta te tiene una sorpresa! 🎂", {
-            body: "Descubre nuestros nuevos sabores y ofertas especiales. 🍩🍪✨",
+            body: "Ahora podras disfrutar nuestros nuevos sabores y ofertas especiales. 🍩🍪✨",
             icon: "./img/icon-1.png"
         });
     }
