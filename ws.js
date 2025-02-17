@@ -36,24 +36,7 @@ self.addEventListener('install', event => {
                 "./js/main.js",
                 "./ws.js",
                 "./css/bootstrap.min.css",
-                "./css/style.css",
-                "./lib/animate/animate.css",
-                "./lib/animate/animate.min.css",
-                "./lib/easing/easing.js",
-                "./lib/easing/easing.min.js",
-                "./lib/owlcarousel/owl.carousel.js",
-                "./lib/owlcarousel/owl.carousel.min.js",
-                "./lib/owlcarousel/assets/ajax-loader.gif",
-                "./lib/owlcarousel/assets/owl.carousel.min.css",
-                "./lib/owlcarousel/assets/owl.carousel.css",
-                "./lib/owlcarousel/assets/owl.theme.default.css",
-                "./lib/owlcarousel/assets/owl.theme.green.css",
-                "./lib/owlcarousel/assets/owl.theme.green.min.css",
-                "./lib/owlcarousel/assets/owl.video.play.png",
-                "./lib/waypoints/links.php",
-                "./lib/waypoints/waypoints.min.js",
-                "./lib/wow/wow.js",
-                "./lib/wow/wow.min.js"
+                "./css/style.css"
 
             ]);
         })
