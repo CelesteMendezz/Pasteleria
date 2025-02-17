@@ -81,18 +81,23 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
     console.log('Service Worker: Fetch', event.request.url);
-    
     event.respondWith(
         caches.match(event.request).then(response => {
-            return response || fetch(event.request).catch(() => {
-                // Si la solicitud es una página HTML, mostrar la 404.html
-                if (event.request.destination === 'document') {
-                    return caches.match('./404.html');
-                }
+            return response || fetch(event.request).then(fetchResponse => {
+                return caches.open('mi-cache-v1').then(cache => {
+                    cache.put(event.request, fetchResponse.clone());
+                    return fetchResponse;
+                });
             });
+        }).catch(() => {
+            // Si falla la red y no hay en caché, redirige a la página 404
+            if (event.request.destination === 'document') {
+                return caches.match('./404.html');
+            }
         })
     );
 });
+
 
 
 self.addEventListener ('sync',event => {
