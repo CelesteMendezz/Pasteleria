@@ -79,15 +79,21 @@ self.addEventListener('activate', event => {
     return self.clients.claim();
 });
 
-self .addEventListener('fetch', event => {
+self.addEventListener('fetch', event => {
     console.log('Service Worker: Fetch', event.request.url);
+    
     event.respondWith(
-        caches.match(event.request)
-        .then(response => {
-          return response || fetch (event.request);
-        }).catch(() => caches.match('/404.html'))
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request).catch(() => {
+                // Si la solicitud es una página HTML, mostrar la 404.html
+                if (event.request.destination === 'document') {
+                    return caches.match('./404.html');
+                }
+            });
+        })
     );
 });
+
 
 self.addEventListener ('sync',event => {
     if (event.tag === 'sincronizar-datos') 
